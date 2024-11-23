@@ -155,7 +155,7 @@
     <Content Include="Form_CARGA.aspx" />
     <Content Include="Form_Correo_User.aspx" />
     <Content Include="Form_DetallesSolicitud_Financiero.aspx" />
-    <Content Include="Form_Gestion_Usuario.aspx" />
+    <Content Include="Form_GestionUserADM.aspx" />
     <Content Include="Form_HistorialFinanciero1.aspx" />
     <Content Include="Form_Historial_Reportes.aspx" />
     <Content Include="Form_MenuUsuario.aspx" />
@@ -304,12 +304,12 @@
     <Compile Include="Form_DetallesSolicitud_Financiero.aspx.designer.cs">
       <DependentUpon>Form_DetallesSolicitud_Financiero.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Form_Gestion_Usuario.aspx.cs">
-      <DependentUpon>Form_Gestion_Usuario.aspx</DependentUpon>
+    <Compile Include="Form_GestionUserADM.aspx.cs">
+      <DependentUpon>Form_GestionUserADM.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Form_Gestion_Usuario.aspx.designer.cs">
-      <DependentUpon>Form_Gestion_Usuario.aspx</DependentUpon>
+    <Compile Include="Form_GestionUserADM.aspx.designer.cs">
+      <DependentUpon>Form_GestionUserADM.aspx</DependentUpon>
     </Compile>
     <Compile Include="Form_HistorialFinanciero1.aspx.cs">
       <DependentUpon>Form_HistorialFinanciero1.aspx</DependentUpon>

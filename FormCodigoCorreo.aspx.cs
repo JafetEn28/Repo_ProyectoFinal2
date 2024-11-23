@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Net.Mail;
 
 namespace Proyecto_Analisis2
@@ -13,10 +8,10 @@ namespace Proyecto_Analisis2
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack) 
+            if (!IsPostBack)
             {
                 string codigo = GenerarCodigoAleatorio();
-                ViewState["CodigoGenerado"] = codigo; 
+                ViewState["CodigoGenerado"] = codigo;
 
                 EnviarCorreo("rodriguezisaac193@gmail.com", "Restablecer contraseña", "Tu código es: " + codigo);
             }
@@ -27,7 +22,7 @@ namespace Proyecto_Analisis2
         protected void Button1_Click(object sender, EventArgs e)
         {
             // Obtener el código aleatorio generado (puedes almacenarlo en ViewState o Session)
-            string codigoGenerado = (string)ViewState["CodigoGenerado"]; 
+            string codigoGenerado = (string)ViewState["CodigoGenerado"];
 
             // Verificar si el código ingresado es correcto
             if (TextBox1.Text == codigoGenerado)
@@ -36,16 +31,16 @@ namespace Proyecto_Analisis2
             }
             else
             {
-                
+
                 Label1.Visible = true;
-                Label1.Text = "El código ingresado es incorrecto. Intenta de nuevo."; 
+                Label1.Text = "El código ingresado es incorrecto. Intenta de nuevo.";
             }
         }
 
 
         public void EnviarCorreo(string destinatario, string asunto, string mensaje)
         {
-            
+
             MailMessage correo = new MailMessage();
             correo.To.Add(destinatario);
             correo.Subject = asunto;
@@ -66,8 +61,8 @@ namespace Proyecto_Analisis2
         private string GenerarCodigoAleatorio()
         {
             Random random = new Random();
-            int codigo = random.Next(100000, 999999); 
-            return codigo.ToString(); 
+            int codigo = random.Next(100000, 999999);
+            return codigo.ToString();
         }
 
 
