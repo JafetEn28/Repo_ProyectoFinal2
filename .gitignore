@@ -1,59 +1,66 @@
-# Archivos de sistema
-.DS_Store
-Thumbs.db
-
-# Archivos de usuario específicos de Visual Studio
+# Archivos de configuración específicos del entorno
 .vscode/
-*.code-workspace
-
-# Archivos de compilación de Visual Studio
-*.obj
-*.exe
-*.pdb
-*.dll
-*.dll.config
+.idea/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Archivos de configuración de paquetes y dependencias
-packages/
+# Archivos de build y compilación
 bin/
 obj/
-*.vs/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.log
+*.tlb
+*.tlog
+*.tmp
+*.vspscc
+*.vssscc
+
+# Paquetes NuGet y restauraciones automáticas
+packages/
+*.nupkg
 project.lock.json
 project.fragment.lock.json
-project.nuget.cache
+artifacts/
 
-# Archivos temporales
-*.log
-*.tmp
-*.cache
+# Archivos de configuración de IIS y depuración
+*.vs/
+_ReSharper*/
+*.DotSettings.user
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
 
-# Archivos de configuración de entorno
-.env
-.env.*
-
-# ASP.NET
-App_Data/
-App_Config/
-
-# Archivos de dependencias de Bootstrap, jQuery y ANTLR si se usan en formato de paquetes
-node_modules/
-bower_components/
-
-# Paquetes de NuGet
-*.nupkg
-.nuget/
-
-# Archivos de configuración generados por ANTLR
-GeneratedParserFiles/
-*.tokens
-*.interp
-
-# Archivos de publicación y despliegue
+# Archivos generados de publicación
 publish/
-wwwroot/
-dist/
+*.publishsettings
 
+# Configuraciones locales y archivos secretos
+appsettings.Development.json
+secrets.json
+.env
+*.config
+
+# Archivos y carpetas generados por sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos del sistema operativo macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos del sistema operativo Linux
+*~
+.nfs*
+
+# Archivos de sistema Windows
+Icon?
+._*
