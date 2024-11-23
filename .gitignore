@@ -1,0 +1,59 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de usuario específicos de Visual Studio
+.vscode/
+*.code-workspace
+
+# Archivos de compilación de Visual Studio
+*.obj
+*.exe
+*.pdb
+*.dll
+*.dll.config
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de configuración de paquetes y dependencias
+packages/
+bin/
+obj/
+*.vs/
+project.lock.json
+project.fragment.lock.json
+project.nuget.cache
+
+# Archivos temporales
+*.log
+*.tmp
+*.cache
+
+# Archivos de configuración de entorno
+.env
+.env.*
+
+# ASP.NET
+App_Data/
+App_Config/
+
+# Archivos de dependencias de Bootstrap, jQuery y ANTLR si se usan en formato de paquetes
+node_modules/
+bower_components/
+
+# Paquetes de NuGet
+*.nupkg
+.nuget/
+
+# Archivos de configuración generados por ANTLR
+GeneratedParserFiles/
+*.tokens
+*.interp
+
+# Archivos de publicación y despliegue
+publish/
+wwwroot/
+dist/
+
