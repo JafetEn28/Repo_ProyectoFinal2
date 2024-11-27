@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_HistorialFinanciero1.aspx.cs" Inherits="Proyecto_Analisis2.Form_HistorialFinanciero1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_ReporteFin_3.aspx.cs" Inherits="Proyecto_Analisis2.Form_ReporteFin_3" %>
 
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8" />
-    <title>Reportes Financieros</title>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Reportes Financieros (+1000.000)</title>
     <style>
         body {
             background-color: #2B3A55;
@@ -91,7 +92,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="auto-style2">
-            <h2 class="auto-style1">Reportes Financieros</h2>
+            <h2 class="auto-style1">Reportes Financieros (+1000.000)</h2>
             <div class="filters" role="group" aria-label="Filtros de requisiciones">
                 <button id="btnTodas" runat="server" aria-label="Mostrar todas las requisiciones">Todas</button>
                 <button id="btnEnProceso" runat="server" aria-label="Mostrar requisiciones en proceso">En Proceso</button>
@@ -116,3 +117,4 @@
     </form>
 </body>
 </html>
+

@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_DetallesSolicitud_Financiero.aspx.cs" Inherits="Proyecto_Analisis2.Form_DetallesSolicitud_Financiero" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_DetallesSolicitud_Financiero1.aspx.cs" Inherits="Proyecto_Analisis2.Form_DetallesSolicitud_Financiero" %>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financiero 1 - 100,000</title>
+    <title>Financiero (1 - 100,000)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,7 +114,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Financiero 1 - 100,000</h1>
+        <h1>Financiero (1 - 100.000)</h1>
 
         <!-- Contenedor del DataGrid -->
         <div class="grid-container">
@@ -203,3 +203,4 @@
         }
     </script>
 </body>
+</html>

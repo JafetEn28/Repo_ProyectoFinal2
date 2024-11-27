@@ -154,9 +154,11 @@
     <Content Include="FormRestablecerContraseña.aspx" />
     <Content Include="Form_CARGA.aspx" />
     <Content Include="Form_Correo_User.aspx" />
-    <Content Include="Form_DetallesSolicitud_Financiero.aspx" />
+    <Content Include="Form_DetallesSolicitud_Financiero1.aspx" />
+    <Content Include="Form_DetallesSolicitud_Financiero2.aspx" />
+    <Content Include="Form_DetallesSolicitud_Financiero3.aspx" />
     <Content Include="Form_GestionUserADM.aspx" />
-    <Content Include="Form_HistorialFinanciero1.aspx" />
+    <Content Include="Form_ReporteFin_1.aspx" />
     <Content Include="Form_Historial_Reportes.aspx" />
     <Content Include="Form_MenuUsuario.aspx" />
     <Content Include="Form_Menu_Financiero.aspx" />
@@ -164,6 +166,8 @@
     <Content Include="Form_Perfil_user.aspx" />
     <Content Include="Form_Prin_Admin.aspx" />
     <Content Include="Form_ReporteApJefe.aspx" />
+    <Content Include="Form_ReporteFin_2.aspx" />
+    <Content Include="Form_ReporteFin_3.aspx" />
     <Content Include="Form_Usuarios_Activos.aspx" />
     <Content Include="Gif\CargaGIF.gif" />
     <Content Include="Global.asax" />
@@ -297,12 +301,26 @@
     <Compile Include="Form_Correo_User.aspx.designer.cs">
       <DependentUpon>Form_Correo_User.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Form_DetallesSolicitud_Financiero.aspx.cs">
-      <DependentUpon>Form_DetallesSolicitud_Financiero.aspx</DependentUpon>
+    <Compile Include="Form_DetallesSolicitud_Financiero1.aspx.cs">
+      <DependentUpon>Form_DetallesSolicitud_Financiero1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Form_DetallesSolicitud_Financiero.aspx.designer.cs">
-      <DependentUpon>Form_DetallesSolicitud_Financiero.aspx</DependentUpon>
+    <Compile Include="Form_DetallesSolicitud_Financiero1.aspx.designer.cs">
+      <DependentUpon>Form_DetallesSolicitud_Financiero1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DetallesSolicitud_Financiero2.aspx.cs">
+      <DependentUpon>Form_DetallesSolicitud_Financiero2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form_DetallesSolicitud_Financiero2.aspx.designer.cs">
+      <DependentUpon>Form_DetallesSolicitud_Financiero2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DetallesSolicitud_Financiero3.aspx.cs">
+      <DependentUpon>Form_DetallesSolicitud_Financiero3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form_DetallesSolicitud_Financiero3.aspx.designer.cs">
+      <DependentUpon>Form_DetallesSolicitud_Financiero3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Form_GestionUserADM.aspx.cs">
       <DependentUpon>Form_GestionUserADM.aspx</DependentUpon>
@@ -311,12 +329,12 @@
     <Compile Include="Form_GestionUserADM.aspx.designer.cs">
       <DependentUpon>Form_GestionUserADM.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Form_HistorialFinanciero1.aspx.cs">
-      <DependentUpon>Form_HistorialFinanciero1.aspx</DependentUpon>
+    <Compile Include="Form_ReporteFin_1.aspx.cs">
+      <DependentUpon>Form_ReporteFin_1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Form_HistorialFinanciero1.aspx.designer.cs">
-      <DependentUpon>Form_HistorialFinanciero1.aspx</DependentUpon>
+    <Compile Include="Form_ReporteFin_1.aspx.designer.cs">
+      <DependentUpon>Form_ReporteFin_1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Form_Historial_Reportes.aspx.cs">
       <DependentUpon>Form_Historial_Reportes.aspx</DependentUpon>
@@ -366,6 +384,20 @@
     </Compile>
     <Compile Include="Form_ReporteApJefe.aspx.designer.cs">
       <DependentUpon>Form_ReporteApJefe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ReporteFin_2.aspx.cs">
+      <DependentUpon>Form_ReporteFin_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form_ReporteFin_2.aspx.designer.cs">
+      <DependentUpon>Form_ReporteFin_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ReporteFin_3.aspx.cs">
+      <DependentUpon>Form_ReporteFin_3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form_ReporteFin_3.aspx.designer.cs">
+      <DependentUpon>Form_ReporteFin_3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Form_Usuarios_Activos.aspx.cs">
       <DependentUpon>Form_Usuarios_Activos.aspx</DependentUpon>
