@@ -152,6 +152,7 @@
     <Content Include="favicon.ico" />
     <Content Include="FormCodigoCorreo.aspx" />
     <Content Include="FormRestablecerContraseña.aspx" />
+    <Content Include="FormValidarCorreo.aspx" />
     <Content Include="Form_CARGA.aspx" />
     <Content Include="Form_Correo_User.aspx" />
     <Content Include="Form_DetallesSolicitud_Financiero1.aspx" />
@@ -286,6 +287,13 @@
     </Compile>
     <Compile Include="FormRestablecerContraseña.aspx.designer.cs">
       <DependentUpon>FormRestablecerContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormValidarCorreo.aspx.cs">
+      <DependentUpon>FormValidarCorreo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormValidarCorreo.aspx.designer.cs">
+      <DependentUpon>FormValidarCorreo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Form_CARGA.aspx.cs">
       <DependentUpon>Form_CARGA.aspx</DependentUpon>
