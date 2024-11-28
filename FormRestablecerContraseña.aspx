@@ -117,7 +117,6 @@
             <!-- Botón Guardar -->
             <div class="form-group">
                 <asp:Button ID="Button1" runat="server" CssClass="btn-submit" Text="Guardar" OnClick="Button1_Click" />
-                <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
             </div>
         </div>
     </form>
