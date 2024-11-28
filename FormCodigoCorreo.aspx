@@ -95,20 +95,20 @@
 
             <!-- Mensaje informativo -->
             <div class="message">
-                <strong>Se te envió un código al correo @ para restablecer la contraseña</strong>
+                <asp:Label ID="lblCorreo" runat="server" Text="Label"></asp:Label>
             </div>
 
             <!-- Ingreso del código -->
             <div class="form-group">
                 <label for="TextBox1">Ingresa el código</label>
-                <asp:TextBox ID="TextBox1" runat="server" CssClass="input-field" />
+                <asp:TextBox ID="txtCodigo" runat="server" CssClass="input-field" />
             </div>
 
             <!-- Mensaje de error -->
-            <asp:Label ID="Label1" runat="server" CssClass="error-message" Text="El código ingresado es incorrecto." Visible="false"></asp:Label>
 
             <!-- Botón de verificación -->
             <asp:Button ID="Button1" runat="server" CssClass="btn-submit" Text="Verificar" OnClick="Button1_Click" />
+            <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
         </div>
     </form>
 

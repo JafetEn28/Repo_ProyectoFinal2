@@ -103,12 +103,12 @@
             <!-- Confirmar contraseña -->
             <div class="form-group">
                 <label for="TextBox2">Confirmar contraseña</label>
-                <asp:TextBox ID="TextBox2" runat="server" CssClass="input-field" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtContra" runat="server" CssClass="input-field" TextMode="Password"></asp:TextBox>
                 <asp:CompareValidator
                     ID="CompareValidator2"
                     runat="server"
-                    ControlToCompare="TextBox2"
-                    ControlToValidate="TextBox3"
+                    ControlToCompare="TextBox3"
+                    ControlToValidate="txtContra"
                     ErrorMessage="Las contraseñas no coinciden"
                     ForeColor="Red"
                     CssClass="error-message" />
@@ -116,7 +116,8 @@
 
             <!-- Botón Guardar -->
             <div class="form-group">
-                <asp:Button ID="Button1" runat="server" CssClass="btn-submit" Text="Guardar" />
+                <asp:Button ID="Button1" runat="server" CssClass="btn-submit" Text="Guardar" OnClick="Button1_Click" />
+                <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
             </div>
         </div>
     </form>

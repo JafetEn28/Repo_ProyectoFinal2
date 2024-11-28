@@ -98,19 +98,20 @@
 
             <!-- Mensaje informativo -->
             <div class="message">
-                <strong>¡Por favor verifica la bandeja de entrada o Spam!</strong></div>
+                <strong>Ingrese su correo electronico</strong></div>
 
             <!-- Ingreso del código -->
             <div class="form-group">
-                <label for="TextBox1">Digite su correo electrónico:</label>
-                <asp:TextBox ID="TextBox1" runat="server" CssClass="input-field" />
+                <label for="TextBox1">:</label>
+                <asp:TextBox ID="txtCorreo" runat="server" CssClass="input-field" />
             </div>
 
             <!-- Mensaje de error -->
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Formato Incorrecto!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Formato Incorrecto!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtCorreo"></asp:RegularExpressionValidator>
 
             <!-- Botón de verificación -->
-            <asp:Button ID="Button1" runat="server" CssClass="btn-submit" Text="Enviar" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" CssClass="btn-submit" Text="Verificar" OnClick="Button1_Click" />
+            <asp:Label ID="lblAlertas" runat="server" Visible="false" Text="Label"></asp:Label>
         </div>
     </form>
 

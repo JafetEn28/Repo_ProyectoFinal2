@@ -104,11 +104,11 @@
         <br />
         <br />
 
-        <asp:Button ID="btnSesion" runat="server" CssClass="login-button" Text="Iniciar Sesión" />
+        <asp:Button ID="btnSesion" runat="server" CssClass="login-button" Text="Iniciar Sesión" OnClick="btnSesion_Click" />
 
         <div class="login-links">
             <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar Contraseña" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/FormCodigoCorreo.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/FormValidarCorreo.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
         </div>
     </form>
 </body>
