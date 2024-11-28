@@ -112,6 +112,7 @@
                     ErrorMessage="Las contraseñas no coinciden"
                     ForeColor="Red"
                     CssClass="error-message" />
+                <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
             </div>
 
             <!-- Botón Guardar -->
