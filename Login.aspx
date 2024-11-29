@@ -99,16 +99,17 @@
 
         <asp:TextBox ID="txtUsuario" runat="server" CssClass="login-input" placeholder="Usuario"></asp:TextBox>
 
-        <asp:TextBox ID="txtContrase" runat="server" CssClass="login-input" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="txtContra" runat="server" CssClass="login-input" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
 
         <br />
         <br />
 
-        <asp:Button ID="btnSesion" runat="server" CssClass="login-button" Text="Iniciar Sesión" />
+        <asp:Button ID="btnSesion" runat="server" CssClass="login-button" Text="Iniciar Sesión" OnClick="btnSesion_Click" />
 
         <div class="login-links">
             <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar Contraseña" />
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/FormCodigoCorreo.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
+            <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
         </div>
     </form>
 </body>
