@@ -18,34 +18,7 @@ namespace Proyecto_Analisis2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-            string correo = txtCorreo.Text.Trim();
-
-            // Verificar si el correo no está vacío
-            if (string.IsNullOrEmpty(correo))
-            {
-                lblAlertas.Text = "Por favor ingrese un correo electrónico.";
-                lblAlertas.Visible = true; // Mostrar el lblAlertas si hay un error
-                return;
-            }
-
-            // Guardar el correo en la sesión
-            Session["Correo"] = correo;
-
-            // Consultar en la base de datos si el correo existe
-            if (CorreoExiste(correo))
-            {
-                
-                Response.Redirect("FormCodigoCorreo.aspx");
-            }
-            else
-            {
-                // Si no existe, mostrar un mensaje en lblAlertas
-                lblAlertas.Text = "El correo electrónico no existe en nuestra base de datos.";
-                lblAlertas.ForeColor = System.Drawing.Color.Red;
-                lblAlertas.Visible = true; // Hacer visible el lblAlertas
-            }
-
+           
         }
         private bool CorreoExiste(string correo)
         {

@@ -99,7 +99,7 @@
 
         <asp:TextBox ID="txtUsuario" runat="server" CssClass="login-input" placeholder="Usuario"></asp:TextBox>
 
-        <asp:TextBox ID="txtContrase" runat="server" CssClass="login-input" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="txtContra" runat="server" CssClass="login-input" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
 
         <br />
         <br />
@@ -108,7 +108,8 @@
 
         <div class="login-links">
             <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar Contraseña" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/FormValidarCorreo.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/FormCodigoCorreo.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
+            <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
         </div>
     </form>
 </body>
