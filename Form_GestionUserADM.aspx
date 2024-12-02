@@ -134,10 +134,11 @@
     <asp:ListItem Value="1">Comprador</asp:ListItem>
     <asp:ListItem Value="2">Aprobador Jefe</asp:ListItem>
     <asp:ListItem Value="3">Aprobador Financiero</asp:ListItem>
+                    <asp:ListItem Value="4">Administrador</asp:ListItem>
 </asp:DropDownList>
 
                 <br />
-                <label for="telefono">Contra:<br />
+                <label for="telefono">Contraseña:<br />
                 <asp:TextBox runat="server" ID="txtContra" CssClass="form-control" TextMode="Password"></asp:TextBox>
                 </label>
                 <br />

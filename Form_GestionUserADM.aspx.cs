@@ -74,7 +74,7 @@ namespace Proyecto_Analisis2
             SqlConnection conexion = new SqlConnection();
 
             //Creamos el string de conexion
-            string strconexion = ConfigurationManager.ConnectionStrings["Usuarios"].ConnectionString;
+            string strconexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
             conexion.ConnectionString = strconexion;
 
@@ -113,7 +113,7 @@ namespace Proyecto_Analisis2
                 byte[] contrasenaEncriptada = EncryptPassword(contrasena);
 
                 // Establecer la cadena de conexión
-                string strConexion = ConfigurationManager.ConnectionStrings["Usuarios"].ConnectionString;
+                string strConexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
                 using (SqlConnection conexion = new SqlConnection(strConexion))
                 {
@@ -137,10 +137,10 @@ namespace Proyecto_Analisis2
 
                         lblMensaje.Text = "Usuario guardado exitosamente.";
 
-                        // Actualizar la tabla con los datos nuevos
+                 
                         CargarUsuarios();
 
-                        // Limpiar los campos de texto
+                  
                         LimpiarCampos();
                     }
                 }
@@ -153,8 +153,7 @@ namespace Proyecto_Analisis2
 
         private bool UsuarioExiste(string cedula, string correo)
         {
-            string strConexion = ConfigurationManager.ConnectionStrings["Usuarios"].ConnectionString;
-
+            string strConexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
             using (SqlConnection conexion = new SqlConnection(strConexion))
             {
                 string query = "SELECT COUNT(*) FROM Usuarios WHERE Cedula = @Cedula OR CorreoElectronico = @Correo";

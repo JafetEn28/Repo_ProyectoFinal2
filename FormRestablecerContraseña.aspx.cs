@@ -101,9 +101,6 @@ namespace Proyecto_Analisis2
             lblAlertas.Visible = true;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
