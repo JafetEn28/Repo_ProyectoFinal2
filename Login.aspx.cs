@@ -7,11 +7,8 @@ namespace Proyecto_Analisis2
 {
     public partial class Login : Page
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btnSesion_Click(object sender, EventArgs e)
@@ -33,10 +30,10 @@ namespace Proyecto_Analisis2
                 try
                 {
                     conn.Open();
-                    string query = @"SELECT u.ContrasenaEncriptada, r.NombreRol 
-                                 FROM Usuarios u 
-                                 INNER JOIN Roles r ON u.RolID = r.RolID 
-                                 WHERE u.CorreoElectronico = @Correo AND u.Estado = 1";
+                    string query = @"SELECT u.UsuarioID, u.ContrasenaEncriptada, r.NombreRol, u.RolID 
+                                     FROM Usuarios u 
+                                     INNER JOIN Roles r ON u.RolID = r.RolID 
+                                     WHERE u.CorreoElectronico = @Correo AND u.Estado = 1";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -47,12 +44,19 @@ namespace Proyecto_Analisis2
                             if (reader.Read())
                             {
                                 // Recuperar datos
+                                int usuarioID = Convert.ToInt32(reader["UsuarioID"]);
                                 byte[] contrasenaEncriptadaBD = (byte[])reader["ContrasenaEncriptada"];
                                 string nombreRol = reader["NombreRol"].ToString();
+                                int rolID = Convert.ToInt32(reader["RolID"]);
 
                                 // Validar contraseña
                                 if (contrasena == System.Text.Encoding.UTF8.GetString(contrasenaEncriptadaBD))
                                 {
+                                    // Guardar datos en variables de sesión
+                                    Session["UsuarioID"] = usuarioID;
+                                    Session["RolID"] = rolID;
+                                    Session["NombreRol"] = nombreRol;
+
                                     // Redirigir según el rol
                                     switch (nombreRol)
                                     {

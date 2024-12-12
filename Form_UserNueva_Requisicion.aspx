@@ -38,7 +38,7 @@ background-position: center;
         }
 
         .container {
-             margin-left: -110px; /* Empuja el contenedor a la derecha */
+             margin-left: 100px; /* Empuja el contenedor a la derecha */
              margin-right: auto; /* Centra el contenedor */
         }
 
@@ -87,6 +87,9 @@ background-position: center;
         button:hover {
             background-color: #00a394;
         }
+        .auto-style1 {
+            margin-left: 0px;
+        }
     </style>
 </head>
 <body>
@@ -95,9 +98,9 @@ background-position: center;
     <h2>Nueva Requisición</h2>
 
     <div class="form-group">
-        <label for="txtDescripcion">Descripción</label>
-        <asp:TextBox ID="txtDescripcion" runat="server" placeholder="Ingrese la descripción del producto"></asp:TextBox>
-    </div>
+        Descripcion<asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+        </label>
+        &nbsp;</div>
 
     <div class="form-group">
         <label for="txtCantidad">Cantidad</label>
@@ -105,18 +108,33 @@ background-position: center;
     </div>
 
     <div class="form-group">
-        <label for="txtCosto">Costo</label>
-        <asp:TextBox ID="txtCosto" runat="server" placeholder="Ingrese el costo unitario"></asp:TextBox>
-    </div>
+        <label for="txtCosto">Costo<asp:TextBox ID="txtCosto" runat="server"></asp:TextBox>
+        </label>
+        &nbsp;</div>
 
     <div class="form-group">
-        <label for="txtJustificacion">Justificación</label>
-        <asp:TextBox ID="txtJustificacion" runat="server" placeholder="Ingrese la justificación" TextMode="MultiLine"></asp:TextBox>
-    </div>
-
-    <button type="submit" runat="server" onserverclick="btnEnviar_Click">Enviar Requisición</button>
+        <label for="txtJustificacion">Justificación<asp:TextBox ID="txtJustificacion" runat="server"></asp:TextBox>
+        </label>
+        &nbsp;</div>
+            <table style="width:100%;">
+                <tr>
+                    <td>
+<asp:Button ID="btnGuardar" runat="server" Text="Guardar Requisición" CssClass="auto-style1" OnClick="btnGuardar_Click" Width="244px" />
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+<asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
 </div>
 
     </form>
 </body>
 </html>
+

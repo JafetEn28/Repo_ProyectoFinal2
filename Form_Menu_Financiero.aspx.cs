@@ -11,11 +11,14 @@ namespace Proyecto_Analisis2
 
         protected void CerrarSesion_Click(object sender, EventArgs e)
         {
-            // Limpiar la sesión
-            Session.Clear();
-            Session.Abandon();
-            // Redirigir al login
-            Response.Redirect("Login.aspx");
+            Session.Clear(); // Limpia todas las variables de sesión
+            Session.Abandon(); // Abandona la sesión actual
+            Response.Redirect("Login.aspx"); // Redirige al login
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

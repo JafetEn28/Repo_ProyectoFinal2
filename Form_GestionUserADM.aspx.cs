@@ -22,7 +22,7 @@ namespace Proyecto_Analisis2
         private void CargarUsuarios()
         {
             // Establecemos la conexión con la base de datos
-            string strConexion = ConfigurationManager.ConnectionStrings["Usuarios"].ConnectionString;
+            string strConexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
             using (SqlConnection conexion = new SqlConnection(strConexion))
             {
                 // Creamos la consulta SQL para obtener los usuarios

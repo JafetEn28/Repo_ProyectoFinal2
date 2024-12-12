@@ -87,9 +87,11 @@
         <!-- Barra de navegación -->
         <div class="navbar">
             <ul>
-                <li><a href="Form_DetallesSolicitud_Financiero">Solicitudes Pendientes</a></li>
-                <li><a href="Form_HistorialFinanciero1">Reportes</a></li>
                 <li>
+                    <asp:Button ID="btnSolicitudes" runat="server" Text="Solicitudes pendientes" />
+                </li>
+                <li>
+                    <asp:Button ID="btnReportes" runat="server" OnClick="Button1_Click" Text="Reportes" />
                     <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="nav-link" OnClientClick="return confirmarCierre();" OnClick="CerrarSesion_Click">
                         Cerrar Sesión
                     </asp:LinkButton>
