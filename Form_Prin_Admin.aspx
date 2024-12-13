@@ -84,7 +84,7 @@
             <asp:HyperLink ID="linkInicio" runat="server" NavigateUrl="~/Form_Prin_Admin.aspx" CssClass="nav-link" style="color: #FF5023">
                 Inicio
             </asp:HyperLink>
-            <asp:HyperLink ID="linkGestionUsuarios" runat="server" NavigateUrl="~/Form_Gestion_Usuario.aspx" CssClass="nav-link" style="color: #FF5023">
+            <asp:HyperLink ID="linkGestionUsuarios" runat="server" NavigateUrl="~/Form_GestionUserADM.aspx" CssClass="nav-link" style="color: #FF5023">
                 Gestión de Usuarios
             </asp:HyperLink>
             <asp:HyperLink ID="linkUsuariosActivos" runat="server" NavigateUrl="~/Form_Usuarios_Activos.aspx" CssClass="nav-link" style="color: #FF5023">

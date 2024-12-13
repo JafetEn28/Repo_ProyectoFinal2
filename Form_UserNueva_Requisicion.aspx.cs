@@ -10,12 +10,12 @@ namespace Proyecto_Analisis2
         protected void Page_Load(object sender, EventArgs e)
         {
             // Validación de sesión comentada como solicitado
-            /*
+           
             if (Session["UsuarioID"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
-            */
+            
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)

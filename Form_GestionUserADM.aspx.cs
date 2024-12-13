@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Proyecto_Analisis2
 {
@@ -15,45 +17,173 @@ namespace Proyecto_Analisis2
             {
                 CargarUsuarios();
             }
+        }
 
-            metConexion();
+
+        public static byte[] HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Calcula el hash como un arreglo de bytes
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return bytes; // Retorna el arreglo de bytes
+            }
         }
 
         private void CargarUsuarios()
         {
-            // Establecemos la conexión con la base de datos
-            string strConexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
-            using (SqlConnection conexion = new SqlConnection(strConexion))
+            string query = "SELECT UsuarioID, Cedula, NombreUsuario, Telefono, CorreoElectronico, RolID FROM Usuarios";
+            DataTable dt = ExecuteQuery(query);
+            gvUsuarios.DataSource = dt;
+            gvUsuarios.DataBind();
+        }
+
+        private bool ExisteCorreo(string correo)
+        {
+            string query = "SELECT COUNT(*) FROM Usuarios WHERE CorreoElectronico = @Correo";
+            SqlParameter[] parameters = { new SqlParameter("@Correo", correo) };
+
+            // Ejecuta la consulta y obtiene el número de registros
+            object result = ExecuteScalar(query, parameters);
+
+            // Verifica si la consulta devolvió un valor y si el valor es mayor que 0
+            if (result != DBNull.Value)
             {
-                // Creamos la consulta SQL para obtener los usuarios
-                string query = "SELECT u.UsuarioID, u.Cedula, u.NombreUsuario, u.Telefono, u.CorreoElectronico, r.NombreRol " +
-               "FROM Usuarios u " +
-               "INNER JOIN Roles r ON u.RolID = r.RolID";
+                return Convert.ToInt32(result) > 0; // Si hay registros, significa que el correo existe
+            }
+            return false;
+        }
 
-                // Creamos el comando SQL y le pasamos la conexión
-                SqlDataAdapter da = new SqlDataAdapter(query, conexion);
 
-                // Creamos el DataTable para almacenar los datos
-                DataTable dt = new DataTable();
+        private object ExecuteScalar(string query, SqlParameter[] parameters)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
-                // Llenamos el DataTable con los resultados de la consulta
-                da.Fill(dt);
-
-                // Ahora agregamos las filas al tbody
-                foreach (DataRow row in dt.Rows)
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    // Creamos una nueva fila en la tabla
-                    string newRow = "<tr>" +
-                                    "<td>" + row["UsuarioID"] + "</td>" +
-                                    "<td>" + row["Cedula"] + "</td>" +
-                                    "<td>" + row["NombreUsuario"] + "</td>" +
-                                    "<td>" + row["Telefono"] + "</td>" +
-                                    "<td>" + row["CorreoElectronico"] + "</td>" +
-                                    "<td>" + row["NombreRol"] + "</td>" +
-                                    "</tr>";
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
 
-                    // Agregamos la fila al tbody con id="userTableBody"
-                    userTableBody.InnerHtml += newRow;
+                    con.Open();
+                    return cmd.ExecuteScalar(); // Devuelve el valor de la primera columna de la primera fila
+                }
+            }
+        }
+
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string correo = txtCorreo.Text;
+
+            // Verificar si el correo ya existe en la base de datos
+            if (ExisteCorreo(correo))
+            {
+                lblMensaje.Text = "El correo electrónico ya está registrado.";
+                return;  // Detener el proceso de guardado si el correo ya existe
+            }
+
+            // Si el correo no existe, realizar la inserción
+            string query = @"
+        INSERT INTO Usuarios (Cedula, NombreUsuario, Telefono, CorreoElectronico, RolID, ContrasenaEncriptada)
+        VALUES (@Cedula, @Nombre, @Telefono, @Correo, @RolID, @Contrasena)";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@Cedula", txtCedula.Text),
+        new SqlParameter("@Nombre", txtNombre.Text),
+        new SqlParameter("@Telefono", txtTelefono.Text),
+        new SqlParameter("@Correo", correo),
+        new SqlParameter("@RolID", ddlRol.SelectedValue),
+        new SqlParameter("@Contrasena", txtContrasena.Text) // Asegúrate de que el campo txtContrasena esté en el formulario
+    };
+
+            int rowsAffected = ExecuteNonQuery(query, parameters);
+            lblMensaje.Text = rowsAffected > 0 ? "Usuario guardado correctamente." : "Error al guardar el usuario.";
+            CargarUsuarios();
+
+        }
+
+        protected void gvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = gvUsuarios.SelectedRow;
+            txtIdUsuario.Text = row.Cells[0].Text;
+            txtCedula.Text = row.Cells[1].Text;
+            txtNombre.Text = row.Cells[2].Text;
+            txtTelefono.Text = row.Cells[3].Text;
+            txtCorreo.Text = row.Cells[4].Text;
+            ddlRol.SelectedValue = row.Cells[5].Text;
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            string query = @"
+        UPDATE Usuarios
+        SET Cedula = @Cedula, NombreUsuario = @Nombre, Telefono = @Telefono, 
+            CorreoElectronico = @Correo, RolID = @RolID, ContrasenaEncriptada = @ContrasenaEncriptada
+        WHERE UsuarioID = @UsuarioID";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@Cedula", txtCedula.Text),
+        new SqlParameter("@Nombre", txtNombre.Text),
+        new SqlParameter("@Telefono", txtTelefono.Text),
+        new SqlParameter("@Correo", txtCorreo.Text),
+        new SqlParameter("@RolID", ddlRol.SelectedValue),
+        new SqlParameter("@ContrasenaEncriptada", HashPassword(txtContrasena.Text)) // Usamos el hash de la contraseña
+        {
+            SqlDbType = SqlDbType.VarBinary // Asegúrate de especificar que es un arreglo de bytes
+        },
+        new SqlParameter("@UsuarioID", txtIdUsuario.Text)
+    };
+
+            int rowsAffected = ExecuteNonQuery(query, parameters);
+            lblMensaje.Text = rowsAffected > 0 ? "Usuario actualizado correctamente." : "Error al actualizar el usuario.";
+            CargarUsuarios();
+            LimpiarCampos();  // Limpiar los campos después de guardar
+
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string query = "DELETE FROM Usuarios WHERE UsuarioID = @UsuarioID";
+            SqlParameter[] parameters = { new SqlParameter("@UsuarioID", txtIdUsuario.Text) };
+
+            int rowsAffected = ExecuteNonQuery(query, parameters);
+            lblMensaje.Text = rowsAffected > 0 ? "Usuario eliminado correctamente." : "Error al eliminar el usuario.";
+
+            CargarUsuarios();
+            LimpiarCampos();  // Limpiar los campos después de guardar
+
+
+        }
+
+        private DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
+        {
+            // Obtiene la cadena de conexión desde el archivo Web.config
+            string connectionString = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
+
+            // Usa un bloque using para manejar la conexión de manera segura
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                // Abre la conexión
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Si hay parámetros, agrégalos al comando
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
+                    // Usa SqlDataAdapter para llenar un DataTable
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    return dt; // Retorna el DataTable con los datos
                 }
             }
         }
@@ -61,148 +191,41 @@ namespace Proyecto_Analisis2
         private void LimpiarCampos()
         {
             txtCedula.Text = "";
+            txtIdUsuario.Text = "";
             txtNombre.Text = "";
             txtTelefono.Text = "";
             txtCorreo.Text = "";
-            txtContra.Text = "";
-            ddlRol.SelectedIndex = -1; // Resetea el DropDownList
+            txtContrasena.Text = ""; // Asegúrate de que tienes un TextBox para la contraseña
+            ddlRol.SelectedIndex = 0; // Establecer el valor predeterminado del DropDownList
+            lblMensaje.Text = ""; // Limpiar cualquier mensaje de error o éxito
         }
 
-        void metConexion()
+        private int ExecuteNonQuery(string query, SqlParameter[] parameters)
         {
-            //Creamos objeto de conexion
-            SqlConnection conexion = new SqlConnection();
+            // Obtiene la cadena de conexión desde el archivo Web.config
+            string connectionString = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
-            //Creamos el string de conexion
-            string strconexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
-
-            conexion.ConnectionString = strconexion;
-
-            conexion.Open();
-
-            Label1.Text = "Conexion Exitosa";
-        }
-
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            try
+            // Usa un bloque using para manejar la conexión de manera segura
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                // Obtener valores desde los controles del formulario
-                string cedula = txtCedula.Text.Trim(); // Asegúrate de que es un string
-                string nombre = txtNombre.Text.Trim();
-                string correo = txtCorreo.Text.Trim();
-                string telefono = txtTelefono.Text.Trim();
-                string rol = ddlRol.SelectedValue; // Asumiendo que es un DropDownList con RolID
-                string contrasena = txtContra.Text.Trim(); // Asumiendo que tienes un campo para la contraseña
-
-                // Validar formato del correo (puedes usar Regex)
-                if (!IsValidEmail(correo))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    lblMensaje.Text = "Correo electrónico no válido.";
-                    return;
-                }
-
-                // Comprobar si el usuario ya existe en la base de datos
-                if (UsuarioExiste(cedula, correo))
-                {
-                    lblMensaje.Text = "El usuario con esa cédula o correo electrónico ya existe.";
-                    return;
-                }
-
-                // Encriptar contraseña (ejemplo con SHA-256)
-                byte[] contrasenaEncriptada = EncryptPassword(contrasena);
-
-                // Establecer la cadena de conexión
-                string strConexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
-
-                using (SqlConnection conexion = new SqlConnection(strConexion))
-                {
-                    string query = "INSERT INTO Usuarios (Cedula, NombreUsuario, CorreoElectronico, Telefono, ContrasenaEncriptada, RolID) " +
-                                   "VALUES (@Cedula, @Nombre, @Correo, @Telefono, @ContrasenaEncriptada, @RolID)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conexion))
+                    // Si hay parámetros, agrégalos al comando
+                    if (parameters != null)
                     {
-                        // Parametrizar la consulta
-                        cmd.Parameters.AddWithValue("@Cedula", cedula);
-                        cmd.Parameters.AddWithValue("@Nombre", nombre);
-                        cmd.Parameters.AddWithValue("@Correo", correo);
-                        cmd.Parameters.AddWithValue("@Telefono", telefono);
-                        cmd.Parameters.AddWithValue("@ContrasenaEncriptada", contrasenaEncriptada);
-                        cmd.Parameters.AddWithValue("@RolID", rol); // Suponiendo que rol es el RolID
-
-                        // Abrir conexión e insertar
-                        conexion.Open();
-                        cmd.ExecuteNonQuery();
-                        conexion.Close();
-
-                        lblMensaje.Text = "Usuario guardado exitosamente.";
-
-                 
-                        CargarUsuarios();
-
-                  
-                        LimpiarCampos();
+                        cmd.Parameters.AddRange(parameters);
                     }
-                }
-            }
-            catch (Exception ex)
-            {
-                lblMensaje.Text = "Error: " + ex.Message;
-            }
-        }
 
-        private bool UsuarioExiste(string cedula, string correo)
-        {
-            string strConexion = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
-            using (SqlConnection conexion = new SqlConnection(strConexion))
-            {
-                string query = "SELECT COUNT(*) FROM Usuarios WHERE Cedula = @Cedula OR CorreoElectronico = @Correo";
-                using (SqlCommand cmd = new SqlCommand(query, conexion))
-                {
-                    cmd.Parameters.AddWithValue("@Cedula", cedula);
-                    cmd.Parameters.AddWithValue("@Correo", correo);
-
-                    conexion.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    conexion.Close();
-
-                    return count > 0; // Si count > 0, significa que ya existe un usuario con esa cédula o correo
+                    // Abre la conexión y ejecuta el comando
+                    con.Open();
+                    return cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        // Función para verificar si el correo es válido
-        private bool IsValidEmail(string email)
+        protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var mail = new System.Net.Mail.MailAddress(email);
-                return mail.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        // Función para encriptar la contraseña con SHA-256
-        private byte[] EncryptPassword(string password)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                return sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-            }
-        }
-
-        protected void btnEditar_Click(object sender, EventArgs e)
-        {
-            // Implementar la lógica de edición aquí
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            // Implementar la lógica de eliminación aquí
+            LimpiarCampos();  // Limpiar los campos después de guardar
         }
     }
 }
-

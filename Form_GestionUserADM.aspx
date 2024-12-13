@@ -1,15 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_GestionUserADM.aspx.cs" Inherits="Proyecto_Analisis2.Form_GestionUserADM" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_GestionUserADM.aspx.cs" Inherits="Proyecto_Analisis2.Form_GestionUserADM" ValidateRequest="false" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Gestión de Usuarios</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a2e; /* Color de fondo del cuerpo */
+            background-color: #1a1a2e;
             background-image: url('Imagenes/FondoADMdesenfoque.png');
             background-size: cover;
             background-repeat: no-repeat;
@@ -18,15 +17,15 @@
         .header {
             text-align: center;
             font-size: 24px;
-            color: #ff8c42; /* Color del encabezado */
+            color: #ff8c42;
             padding: 10px;
-            border-bottom: 3px solid #ff8c42; /* Línea debajo del encabezado */
+            border-bottom: 3px solid #ff8c42;
         }
         .form-container {
             max-width: 500px;
             margin: auto;
             padding: 20px;
-            background-color: #1e1e3f; /* Fondo del formulario */
+            background-color: #1e1e3f;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -36,21 +35,16 @@
         .form-group label {
             display: block;
             font-weight: bold;
-            color: #f5f5f5; /* Color de las etiquetas */
+            color: #f5f5f5;
         }
         .form-group input,
         .form-group select {
             width: 100%;
             padding: 8px;
-            border: 1px solid #33334d; /* Color de borde de inputs */
+            border: 1px solid #33334d;
             border-radius: 5px;
-            background-color: #2e2e52; /* Fondo de inputs */
-            color: #f5f5f5; /* Color de texto en inputs */
-        }
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #ff8c42; /* Color de borde al enfocarse */
-            outline: none;
+            background-color: #2e2e52;
+            color: #f5f5f5;
         }
         .button-container {
             text-align: center;
@@ -67,13 +61,13 @@
             font-size: 16px;
         }
         .save-btn {
-            background-color: #ff8c42; /* Botón Guardar */
+            background-color: #ff8c42;
         }
         .edit-btn {
-            background-color: #2e2e52; /* Botón Editar */
+            background-color: #2e2e52;
         }
         .delete-btn {
-            background-color: #e74c3c; /* Botón Eliminar */
+            background-color: #e74c3c;
         }
         .user-table {
             width: 100%;
@@ -84,22 +78,16 @@
         .user-table td {
             padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #33334d; /* Color de los bordes de la tabla */
+            border-bottom: 1px solid #33334d;
             color: white;
         }
         .user-table th {
-            background-color: #2e2e52; /* Fondo de las cabeceras */
+            background-color: #2e2e52;
             font-weight: bold;
-            color: #ff8c42; /* Color de texto de las cabeceras */
+            color: #ff8c42;
         }
         .user-table tr:nth-child(even) {
-            background-color: #1a1a2e; /* Fondo alterno de filas */
-        }
-        .auto-style1 {
-            color: #FFFFFF;
-        }
-        .auto-style2 {
-            text-align: center;
+            background-color: #1a1a2e;
         }
     </style>
 </head>
@@ -129,51 +117,40 @@
                 <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control" TextMode="Email"></asp:TextBox>
             </div>
             <div class="form-group">
+                <label for="contrasena">Contraseña:</label>
+                <asp:TextBox runat="server" ID="txtContrasena" CssClass="form-control" TextMode="Password"></asp:TextBox>
+            </div>
+            <div class="form-group">
                 <label for="rol">Rol:</label>
                 <asp:DropDownList runat="server" ID="ddlRol" CssClass="form-control">
-    <asp:ListItem Value="1">Comprador</asp:ListItem>
-    <asp:ListItem Value="2">Aprobador Jefe</asp:ListItem>
-    <asp:ListItem Value="3">Aprobador Financiero</asp:ListItem>
+                    <asp:ListItem Value="1">Usuario</asp:ListItem>
+                    <asp:ListItem Value="2">Aprobador Jefe</asp:ListItem>
+                    <asp:ListItem Value="3">Aprobador Financiero</asp:ListItem>
                     <asp:ListItem Value="4">Administrador</asp:ListItem>
-</asp:DropDownList>
-
-                <br />
-                <label for="telefono">Contraseña:<br />
-                <asp:TextBox runat="server" ID="txtContra" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                </label>
-                <br />
-                <br />
-                <br />
+                </asp:DropDownList>
             </div>
-
             <div class="button-container">
                 <asp:Button runat="server" ID="btnGuardar" CssClass="save-btn" Text="Guardar" OnClick="btnGuardar_Click" />
-                <asp:Button runat="server" ID="btnEditar" CssClass="edit-btn" Text="Editar" OnClick="btnEditar_Click" Width="103px" />
+                <asp:Button runat="server" ID="btnActualizar" CssClass="edit-btn" Text="Actualizar" OnClick="btnEditar_Click" />
                 <asp:Button runat="server" ID="btnEliminar" CssClass="delete-btn" Text="Eliminar" OnClick="btnEliminar_Click" />
+                 <asp:Button ID="btnLimpiar" runat="server" OnClick="btnLimpiar_Click" Text="Limpiar" />
                 <br />
-                <asp:Label ID="lblMensaje" runat="server" CssClass="auto-style1" Text="Label"></asp:Label>
+                z<asp:Label ID="lblMensaje" runat="server" ForeColor="White"></asp:Label>
             </div>
         </div>
 
-        <table class="user-table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Cédula</th>
-            <th>Nombre</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Rol</th>
-        </tr>
-    </thead>
-    <tbody id="userTableBody" runat="server">
-        <!-- Aquí se cargarán las filas con los datos -->
-    </tbody>
-</table>
-
-        <p class="auto-style2">
-            <asp:Label ID="Label1" runat="server" CssClass="auto-style1" Text="Label"></asp:Label>
-        </p>
+        <asp:GridView runat="server" ID="gvUsuarios" AutoGenerateColumns="False" CssClass="user-table" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="UsuarioID" HeaderText="ID" />
+                <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
+                <asp:BoundField DataField="NombreUsuario" HeaderText="Nombre" />
+                <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
+                <asp:BoundField DataField="CorreoElectronico" HeaderText="Correo" />
+                <asp:BoundField DataField="RolID" HeaderText="Rol" />
+                <asp:ButtonField Text="Seleccionar" CommandName="Select" />
+            </Columns>
+        </asp:GridView>
     </form>
 </body>
 </html>
+
