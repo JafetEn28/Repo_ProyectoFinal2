@@ -24,9 +24,9 @@ namespace Proyecto_Analisis2
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
-                // Calcula el hash como un arreglo de bytes
+          
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return bytes; // Retorna el arreglo de bytes
+                return bytes; 
             }
         }
 
@@ -43,13 +43,12 @@ namespace Proyecto_Analisis2
             string query = "SELECT COUNT(*) FROM Usuarios WHERE CorreoElectronico = @Correo";
             SqlParameter[] parameters = { new SqlParameter("@Correo", correo) };
 
-            // Ejecuta la consulta y obtiene el número de registros
+            
             object result = ExecuteScalar(query, parameters);
 
-            // Verifica si la consulta devolvió un valor y si el valor es mayor que 0
             if (result != DBNull.Value)
             {
-                return Convert.ToInt32(result) > 0; // Si hay registros, significa que el correo existe
+                return Convert.ToInt32(result) > 0; 
             }
             return false;
         }
@@ -69,7 +68,7 @@ namespace Proyecto_Analisis2
                     }
 
                     con.Open();
-                    return cmd.ExecuteScalar(); // Devuelve el valor de la primera columna de la primera fila
+                    return cmd.ExecuteScalar(); 
                 }
             }
         }
@@ -79,14 +78,13 @@ namespace Proyecto_Analisis2
         {
             string correo = txtCorreo.Text;
 
-            // Verificar si el correo ya existe en la base de datos
+           
             if (ExisteCorreo(correo))
             {
                 lblMensaje.Text = "El correo electrónico ya está registrado.";
-                return;  // Detener el proceso de guardado si el correo ya existe
+                return;  
             }
 
-            // Si el correo no existe, realizar la inserción
             string query = @"
         INSERT INTO Usuarios (Cedula, NombreUsuario, Telefono, CorreoElectronico, RolID, ContrasenaEncriptada)
         VALUES (@Cedula, @Nombre, @Telefono, @Correo, @RolID, @Contrasena)";
@@ -97,7 +95,7 @@ namespace Proyecto_Analisis2
         new SqlParameter("@Telefono", txtTelefono.Text),
         new SqlParameter("@Correo", correo),
         new SqlParameter("@RolID", ddlRol.SelectedValue),
-        new SqlParameter("@Contrasena", txtContrasena.Text) // Asegúrate de que el campo txtContrasena esté en el formulario
+        new SqlParameter("@Contrasena", txtContrasena.Text) 
     };
 
             int rowsAffected = ExecuteNonQuery(query, parameters);
@@ -131,9 +129,9 @@ namespace Proyecto_Analisis2
         new SqlParameter("@Telefono", txtTelefono.Text),
         new SqlParameter("@Correo", txtCorreo.Text),
         new SqlParameter("@RolID", ddlRol.SelectedValue),
-        new SqlParameter("@ContrasenaEncriptada", HashPassword(txtContrasena.Text)) // Usamos el hash de la contraseña
+        new SqlParameter("@ContrasenaEncriptada", HashPassword(txtContrasena.Text)) 
         {
-            SqlDbType = SqlDbType.VarBinary // Asegúrate de especificar que es un arreglo de bytes
+            SqlDbType = SqlDbType.VarBinary 
         },
         new SqlParameter("@UsuarioID", txtIdUsuario.Text)
     };
@@ -141,7 +139,7 @@ namespace Proyecto_Analisis2
             int rowsAffected = ExecuteNonQuery(query, parameters);
             lblMensaje.Text = rowsAffected > 0 ? "Usuario actualizado correctamente." : "Error al actualizar el usuario.";
             CargarUsuarios();
-            LimpiarCampos();  // Limpiar los campos después de guardar
+            LimpiarCampos();  
 
         }
 
@@ -154,36 +152,35 @@ namespace Proyecto_Analisis2
             lblMensaje.Text = rowsAffected > 0 ? "Usuario eliminado correctamente." : "Error al eliminar el usuario.";
 
             CargarUsuarios();
-            LimpiarCampos();  // Limpiar los campos después de guardar
+            LimpiarCampos(); 
 
 
         }
 
         private DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
-            // Obtiene la cadena de conexión desde el archivo Web.config
+          
             string connectionString = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
-            // Usa un bloque using para manejar la conexión de manera segura
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                // Abre la conexión
+                
                 con.Open();
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    // Si hay parámetros, agrégalos al comando
+                  
                     if (parameters != null)
                     {
                         cmd.Parameters.AddRange(parameters);
                     }
 
-                    // Usa SqlDataAdapter para llenar un DataTable
+                    
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    return dt; // Retorna el DataTable con los datos
+                    return dt; 
                 }
             }
         }
@@ -195,28 +192,27 @@ namespace Proyecto_Analisis2
             txtNombre.Text = "";
             txtTelefono.Text = "";
             txtCorreo.Text = "";
-            txtContrasena.Text = ""; // Asegúrate de que tienes un TextBox para la contraseña
-            ddlRol.SelectedIndex = 0; // Establecer el valor predeterminado del DropDownList
-            lblMensaje.Text = ""; // Limpiar cualquier mensaje de error o éxito
+            txtContrasena.Text = ""; 
+            ddlRol.SelectedIndex = 0; 
+            lblMensaje.Text = ""; 
         }
 
         private int ExecuteNonQuery(string query, SqlParameter[] parameters)
         {
-            // Obtiene la cadena de conexión desde el archivo Web.config
+          
             string connectionString = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
-            // Usa un bloque using para manejar la conexión de manera segura
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    // Si hay parámetros, agrégalos al comando
+                    
                     if (parameters != null)
                     {
                         cmd.Parameters.AddRange(parameters);
                     }
 
-                    // Abre la conexión y ejecuta el comando
+                   
                     con.Open();
                     return cmd.ExecuteNonQuery();
                 }
@@ -225,7 +221,7 @@ namespace Proyecto_Analisis2
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            LimpiarCampos();  // Limpiar los campos después de guardar
+            LimpiarCampos();  
         }
     }
 }
