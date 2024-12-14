@@ -24,31 +24,31 @@ namespace Proyecto_Analisis2
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control btnTodas.
+        /// Control btnFTodas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnTodas;
+        protected global::System.Web.UI.WebControls.Button btnFTodas;
 
         /// <summary>
-        /// Control btnEnProceso.
+        /// Control btnFAprobadas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnEnProceso;
+        protected global::System.Web.UI.WebControls.Button btnFAprobadas;
 
         /// <summary>
-        /// Control btnAprobadas.
+        /// Control btnFPendientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnAprobadas;
+        protected global::System.Web.UI.WebControls.Button btnFPendientes;
 
         /// <summary>
         /// Control btnRechazadas.
@@ -57,7 +57,7 @@ namespace Proyecto_Analisis2
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnRechazadas;
+        protected global::System.Web.UI.WebControls.Button btnRechazadas;
 
         /// <summary>
         /// Control GridViewRequisiciones.
@@ -69,21 +69,39 @@ namespace Proyecto_Analisis2
         protected global::System.Web.UI.WebControls.GridView GridViewRequisiciones;
 
         /// <summary>
-        /// Control btnVerDetalle.
+        /// Control btnAceptar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnVerDetalle;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnAceptar;
 
         /// <summary>
-        /// Control Button1.
+        /// Control btnRechazarR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnRechazarR;
+
+        /// <summary>
+        /// Control btnAprobarR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAprobarR;
+
+        /// <summary>
+        /// Control lblAlertas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlertas;
     }
 }
