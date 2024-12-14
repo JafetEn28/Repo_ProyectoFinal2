@@ -24,79 +24,31 @@ namespace Proyecto_Analisis2
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-<<<<<<< Updated upstream
-        /// Control txtId.
-=======
         /// Control GridView1.
->>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-<<<<<<< Updated upstream
-        protected global::System.Web.UI.WebControls.TextBox txtId;
-
-        /// <summary>
-        /// Control txtDescripcion.
-=======
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// Control txtJustJefe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtJustJefe;
+
+        /// <summary>
         /// Control btnRechazar.
->>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-<<<<<<< Updated upstream
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
-
-        /// <summary>
-        /// Control txtCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
-
-        /// <summary>
-        /// Control txtCosto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCosto;
-
-        /// <summary>
-        /// Control txtJustComprador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJustComprador;
-
-        /// <summary>
-        /// Control TextJustJefe.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextJustJefe;
-
-        /// <summary>
-        /// Control gdReq.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdReq;
+        protected global::System.Web.UI.WebControls.Button btnRechazar;
 
         /// <summary>
         /// Control btnAprobar.
@@ -108,31 +60,12 @@ namespace Proyecto_Analisis2
         protected global::System.Web.UI.WebControls.Button btnAprobar;
 
         /// <summary>
-        /// Control btnRechazar.
+        /// Control lblAlertas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRechazar;
-
-        /// <summary>
-        /// Control Button1.
-=======
-        protected global::System.Web.UI.WebControls.Button btnRechazar;
-
-        /// <summary>
-        /// Control Button2.
->>>>>>> Stashed changes
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-<<<<<<< Updated upstream
-        protected global::System.Web.UI.WebControls.Button Button1;
-=======
-        protected global::System.Web.UI.WebControls.Button Button2;
->>>>>>> Stashed changes
+        protected global::System.Web.UI.WebControls.Label lblAlertas;
     }
 }

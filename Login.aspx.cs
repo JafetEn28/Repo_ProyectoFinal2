@@ -43,21 +43,20 @@ namespace Proyecto_Analisis2
                         {
                             if (reader.Read())
                             {
-                                // Recuperar datos
+                               
                                 int usuarioID = Convert.ToInt32(reader["UsuarioID"]);
                                 byte[] contrasenaEncriptadaBD = (byte[])reader["ContrasenaEncriptada"];
                                 string nombreRol = reader["NombreRol"].ToString();
                                 int rolID = Convert.ToInt32(reader["RolID"]);
 
-                                // Validar contraseña
                                 if (contrasena == System.Text.Encoding.UTF8.GetString(contrasenaEncriptadaBD))
                                 {
-                                    // Guardar datos en variables de sesión
+                                    
                                     Session["UsuarioID"] = usuarioID;
                                     Session["RolID"] = rolID;
                                     Session["NombreRol"] = nombreRol;
 
-                                    // Redirigir según el rol
+                                    
                                     switch (nombreRol)
                                     {
                                         case "Aprobador jefe":

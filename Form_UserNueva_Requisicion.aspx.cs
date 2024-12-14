@@ -9,13 +9,11 @@ namespace Proyecto_Analisis2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Validación de sesión comentada como solicitado
-           
-          /*  if (Session["UsuarioID"] == null)
+            
+            if (Session["UsuarioID"] == null)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("Login.aspx"); 
             }
-            */
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -33,13 +31,14 @@ namespace Proyecto_Analisis2
 
             try
             {
-                // Obtén el UsuarioID desde la sesión (comentado como solicitado)
-                // int usuarioID = Convert.ToInt32(Session["UsuarioID"]);
-                int usuarioID = 1; // Temporal: asignar manualmente un UsuarioID de prueba
+                // Obtener el UsuarioID de la sesión activa
+                int usuarioID = Convert.ToInt32(Session["UsuarioID"]);
 
                 // Captura los valores del formulario
                 string descripcion = txtDescripcion.Text;
                 string justificacion = txtJustificacion.Text;
+
+                // Validar el monto y cantidad
                 if (!decimal.TryParse(txtCosto.Text, out decimal costo))
                 {
                     lblAlertas.Text = "Por favor, ingrese un monto válido.";
@@ -54,27 +53,27 @@ namespace Proyecto_Analisis2
                     return;
                 }
 
-                // Conexión a la base de datos
+               
                 string connectionString = ConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    // Inserta la requisición en la base de datos
+                    // Insertar la requisición en la base de datos, incluyendo los estados de Jefe y Financiero
                     string query = @"INSERT INTO Requisiciones 
-                                     (CompradorID, Descripcion, Justificacion, Monto, Cantidad, Estado) 
-                                     VALUES (@CompradorID, @Descripcion, @Justificacion, @Monto, @Cantidad, 'En proceso')";
+                                     (CompradorID, Descripcion, Justificacion, Monto, Cantidad,  EstadoJefe, EstadoFinanciero) 
+                                     VALUES (@CompradorID, @Descripcion, @Justificacion, @Monto, @Cantidad, 'En proceso', 'En proceso')";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@CompradorID", usuarioID);
+                        cmd.Parameters.AddWithValue("@CompradorID", usuarioID); // Se usa el UsuarioID de la sesión
                         cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                         cmd.Parameters.AddWithValue("@Justificacion", justificacion);
                         cmd.Parameters.AddWithValue("@Monto", costo);
                         cmd.Parameters.AddWithValue("@Cantidad", cantidad);
 
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery(); // Ejecutar el query de inserción
                     }
                 }
 

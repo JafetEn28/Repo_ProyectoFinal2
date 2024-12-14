@@ -118,7 +118,6 @@
     </Columns>
 </asp:GridView>
             </div>
-            <button class="btn-detail" id="btnVerDetalle" runat="server"></button>
             <asp:Button ID="Button5" runat="server" Height="33px" OnClick="Button5_Click" Text="Rechazar" Width="109px" />
             <asp:Button ID="Button6" runat="server" Height="33px" OnClick="Button6_Click" Text="Aprobar" Width="104px" />
             <asp:Label ID="lblAlertas" runat="server" Text="Label"></asp:Label>
