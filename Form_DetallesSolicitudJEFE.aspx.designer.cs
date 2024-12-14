@@ -11,7 +11,7 @@ namespace Proyecto_Analisis2
 {
 
 
-    public partial class Form_Menu_Jefe
+    public partial class Form_DetallesSolicitudJEFE
     {
 
         /// <summary>
@@ -24,21 +24,33 @@ namespace Proyecto_Analisis2
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+<<<<<<< Updated upstream
         /// Control txtId.
+=======
+        /// Control GridView1.
+>>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+<<<<<<< Updated upstream
         protected global::System.Web.UI.WebControls.TextBox txtId;
 
         /// <summary>
         /// Control txtDescripcion.
+=======
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+
+        /// <summary>
+        /// Control btnRechazar.
+>>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+<<<<<<< Updated upstream
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
@@ -106,11 +118,21 @@ namespace Proyecto_Analisis2
 
         /// <summary>
         /// Control Button1.
+=======
+        protected global::System.Web.UI.WebControls.Button btnRechazar;
+
+        /// <summary>
+        /// Control Button2.
+>>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+<<<<<<< Updated upstream
         protected global::System.Web.UI.WebControls.Button Button1;
+=======
+        protected global::System.Web.UI.WebControls.Button Button2;
+>>>>>>> Stashed changes
     }
 }

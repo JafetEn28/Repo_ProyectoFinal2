@@ -155,6 +155,7 @@
     <Content Include="FormValidarCorreo.aspx" />
     <Content Include="Form_CARGA.aspx" />
     <Content Include="Form_Correo_User.aspx" />
+    <Content Include="Form_DetallesSolicitudJEFE.aspx" />
     <Content Include="Form_DetallesSolicitud_Financiero1.aspx" />
     <Content Include="Form_DetallesSolicitud_Financiero2.aspx" />
     <Content Include="Form_DetallesSolicitud_Financiero3.aspx" />
@@ -244,7 +245,6 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="Form_DetallesSolicitudJEFE.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -308,6 +308,13 @@
     </Compile>
     <Compile Include="Form_Correo_User.aspx.designer.cs">
       <DependentUpon>Form_Correo_User.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DetallesSolicitudJEFE.aspx.cs">
+      <DependentUpon>Form_DetallesSolicitudJEFE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form_DetallesSolicitudJEFE.aspx.designer.cs">
+      <DependentUpon>Form_DetallesSolicitudJEFE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Form_DetallesSolicitud_Financiero1.aspx.cs">
       <DependentUpon>Form_DetallesSolicitud_Financiero1.aspx</DependentUpon>
@@ -445,13 +452,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Form_DetallesSolicitudJEFE.aspx.cs">
-      <DependentUpon>Form_DetallesSolicitudJEFE.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Form_DetallesSolicitudJEFE.aspx.designer.cs">
-      <DependentUpon>Form_DetallesSolicitudJEFE.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
