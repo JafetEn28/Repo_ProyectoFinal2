@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form_DetallesSolicitudJEFE.aspx.cs" Inherits="Proyecto_Analisis2.Form_Menu_Jefe" %>
 
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -115,51 +118,61 @@
 <body>
     <form id="form1" runat="server">
         <div class="form-container">
-            <!-- Título del formulario -->
+        
             <div class="form-title">
                 Detalles de Solicitud
             </div>
 
-            <!-- Fila de ID -->
             <div class="form-row">
                 <label class="form-label" for="TextBox7">ID:</label>
-                <asp:TextBox ID="TextBox7" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtId" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <!-- Fila de Descripción -->
-            <div class="form-row">
+                <div class="form-row">
                 <label class="form-label" for="TextBox2">Descripción:</label>
-                <asp:TextBox ID="TextBox2" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <!-- Fila de Cantidad -->
+     
             <div class="form-row">
                 <label class="form-label" for="TextBox3">Cantidad:</label>
-                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtCantidad" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <!-- Fila de Costo -->
+       
             <div class="form-row">
                 <label class="form-label" for="TextBox4">Costo:</label>
-                <asp:TextBox ID="TextBox4" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtCosto" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <!-- Fila de Justificación comprador -->
+      
             <div class="form-row">
                 <label class="form-label" for="TextBox5">Justificación comprador:</label>
-                <asp:TextBox ID="TextBox5" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtJustComprador" runat="server" CssClass="form-input" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <!-- Fila de Detalle aprobador jefe -->
+      
             <div class="form-row">
-                <label class="form-label" for="TextBox6">Detalle aprobador jefe:</label>
-                <asp:TextBox ID="TextBox6" runat="server" CssClass="form-input"></asp:TextBox>
+                <label class="form-label" for="TextBox6">Detalle aprobador jefe:<asp:TextBox ID="TextJustJefe" runat="server" CssClass="form-input"></asp:TextBox>
+                </label>&nbsp;
+                <asp:GridView ID="gdReq" runat="server" AutoGenerateColumns="False" CssClass="form-input" 
+    OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <Columns>
+        <asp:BoundField DataField="RequisicionID" HeaderText="ID" />
+        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+        <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+        <asp:BoundField DataField="Monto" HeaderText="Costo" />
+        <asp:BoundField DataField="Justificacion" HeaderText="Justificación Comprador" />
+        <asp:ButtonField Text="Seleccionar" CommandName="Select" />
+    </Columns>
+</asp:GridView>
             </div>
 
-            <!-- Fila de botones -->
+         
             <div class="button-row">
-                <asp:Button ID="Button1" runat="server" CssClass="form-button" Text="Aceptar" />
-                <asp:Button ID="Button2" runat="server" CssClass="auto-style1" Text="Rechazar" />
+                <asp:Button ID="btnAprobar" runat="server" CssClass="form-button" Text="Aprobar" />
+                <asp:Button ID="btnRechazar" runat="server" CssClass="auto-style1" Text="Rechazar" />
+                <asp:Button ID="Button1" runat="server" Text="Button" />
             </div>
         </div>
     </form>

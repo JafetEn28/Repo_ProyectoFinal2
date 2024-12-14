@@ -110,6 +110,18 @@
                 background-color: #A2D2FF;
                 color: #2B3A55;
             }
+        .auto-style1 {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            border: 1px solid #A2D2FF;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #3A4A6B;
+            margin-top: 10px;
+            width: 872px;
+            height: 419px;
+        }
     </style>
 </head>
 <body>
@@ -163,28 +175,36 @@
         </div>
 
         <!-- Contenedor del formulario -->
-        <div class="form-container">
+        <div class="auto-style1">
             <label for="idUsuario">ID Usuario:</label>
             <input type="text" id="idUsuario" name="idUsuario" value="USR001" readonly="readonly" />
 
-            <label for="idRequisicion">ID Requisición:</label>
+            <label for="idRequisicion">
+            <br />
+            ID Requisición:</label>
             <input type="text" id="idRequisicion" name="idRequisicion" value="REQ1001" readonly="readonly" />
 
             <label for="descripcion">Descripción:</label>
             <input type="text" id="descripcion" name="descripcion" value="Compra de equipos de oficina" readonly="readonly" />
 
-            <label for="cantidad">Cantidad:</label>
-            <input type="text" id="cantidad" name="cantidad" value="10" readonly="readonly" />
+            <label for="cantidad">
+            <br />
+            Cantidad:<br />
+            </label>
+            &nbsp;<input type="text" id="cantidad" name="cantidad" value="10" readonly="readonly" />
 
-            <label for="costo">Costo:</label>
-            <input type="text" id="costo" name="costo" value="₡50,000" readonly="readonly" />
+            <label for="costo">
+            <br />
+            Costo:<br />
+            </label>
+            &nbsp;<input type="text" id="costo" name="costo" value="₡50,000" readonly="readonly" />
 
             <label for="comentarioJefe">Comentario Jefe:</label>
             <textarea id="comentarioJefe" name="comentarioJefe" rows="2" readonly="readonly">Aprobado para compra</textarea>
 
-            <label for="comentarioFinanciero">Comentario Financiero:</label>
-            <textarea id="comentarioFinanciero" name="comentarioFinanciero" rows="2"></textarea>
-        </div>
+            <label for="comentarioFinanciero">Comentario Financiero:</label>&nbsp;
+            <br />
+            <textarea id="comentarioFinanciero" name="comentarioFinanciero" rows="2" cols="20"></textarea></div>
 
         <!-- Contenedor de botones -->
         <div class="button-container">

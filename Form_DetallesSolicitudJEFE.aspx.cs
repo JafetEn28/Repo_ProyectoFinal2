@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using System.Web.UI.WebControls;
 
 namespace Proyecto_Analisis2
 {
@@ -6,7 +10,8 @@ namespace Proyecto_Analisis2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
+       
     }
 }
